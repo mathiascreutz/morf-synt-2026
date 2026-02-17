@@ -17,7 +17,7 @@ class Ngrams:
     def set_weights(self, zerogram_weight, unigram_weight, bigram_weight, trigram_weight, fourgram_weight):
         """ Set weights for the ngram mixture model (interpolated model) """
         self.weights = (zerogram_weight, unigram_weight, bigram_weight, trigram_weight, fourgram_weight)
-        if sum(self.weights) != 1.0:
+        if abs(sum(self.weights) - 1.0) > 0.0000001:
             print("Error: The weights summed together should be 1.0. The current value is", sum(self.weights))
             
     def p_zerogram(self):
